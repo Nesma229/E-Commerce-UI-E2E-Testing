@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DemoCommerceBestPractice Suite">
+    <test name="TestFLows">
+        <classes>
+            <class name="registeration.RegistrationTests">
+                <methods>
+                    <include name = "testValidRegistration"/>
+                </methods>
+            </class>
+            <class name="shoppingCart.AddToCart">
+                <methods>
+                    <include name = "testValidAddToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
