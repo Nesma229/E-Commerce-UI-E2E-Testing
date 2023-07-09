@@ -1,9 +1,12 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import static utils.CustomMethods.*;
 
 public class HomePage {
 private WebDriver driver;
@@ -29,54 +32,55 @@ public HomePage(WebDriver driver){
 
    private final By macBookProduct = By.xpath("//img[@alt='Picture of Apple MacBook Pro 13-inch']");
 
-
+    @Step
     public RegistrationPage clickRegistrationForm(){
 
-    driver.findElement(regButton).click();
+    findElementClickable(driver,regButton).click();
     return new RegistrationPage(driver);
     }
 
-
+    @Step
     public LoginPage clickLoginForm(){
 
-        driver.findElement(logInButton).click();
+        findElementClickable(driver,logInButton).click();
         return new LoginPage(driver);
     }
-
+    @Step
     public String getAlertForLogin(){
 
-    return driver.findElement(alertMsgForLogin).getText();
+    return findElementPresence(driver,alertMsgForLogin).getText();
     }
 
     //Search for product
-
+    @Step
     public SoftwareCategoriesPage searchForProduct(String productName){
-    driver.findElement(searchField).sendKeys(productName);
-    driver.findElement(searchButton).click();
+    findElementPresence(driver,searchField).sendKeys(productName);
+    findElementClickable(driver,searchButton).click();
     return new SoftwareCategoriesPage(driver);
     }
-
+    @Step
     public String productTitleText(int index){
     return   driver.findElements(elementTitle).get(index).getText();
     }
 
+    @Step
     public int productSize(){
     return  driver.findElements(elementTitle).size();
     }
 
    //Change currency
-
+   @Step
     public HomePage selectCurrency(String typeOfCurrency) {
-        Select selectDay = new Select(driver.findElement(currency));
+        Select selectDay = new Select(findElementPresence(driver,currency));
         selectDay.selectByVisibleText(typeOfCurrency);
         return this;
     }
-
+    @Step
     public String productPricesText(int index){
 
         return driver.findElements(elementPrice).get(index).getText();
     }
-
+    @Step
     public int elementPricesSize(){
 
         return driver.findElements(elementPrice).size();
@@ -85,7 +89,7 @@ public HomePage(WebDriver driver){
   //Select Categories
 
 
-
+    @Step
     public  HomePage hoverCategory(int index){
 
     Actions action =  new Actions(driver);
@@ -93,10 +97,35 @@ public HomePage(WebDriver driver){
     return this;
    }
 
-
+    @Step
     public SoftwareCategoriesPage clickSoftware(){
-        driver.findElement(softwareCategory).click();
+        findElementClickable(driver,softwareCategory).click();
         return new SoftwareCategoriesPage(driver);
+    }
+
+
+    public HomePage registerScenario(String firstName, String lastName, String birthDay, String birthMonth, String birthYear,
+                                     String email, String password){
+        clickRegistrationForm()
+                .clickGenderRadioBtn()
+                .enterFirstAndLastName(firstName, lastName)
+                .selectDateOfBirth(birthDay, birthMonth, birthYear)
+                .enterEmail(email)
+                .enterPassAndConfirmPass(password, password)
+                .saveRegistrationData()
+                .clickContinue();
+
+        return this;
+    }
+
+
+    public HomePage loginScenario(String email, String password){
+        clickLoginForm()
+                .enterLoginEmail(email)
+                .enterLoginPassword(password)
+                .confirmLogin();
+
+        return this;
     }
 
 
@@ -105,6 +134,7 @@ public HomePage(WebDriver driver){
 //        driver.findElement(computerCategories).click();
 //        return new CategoriesPage(driver);
 //    }
+
 
 
 

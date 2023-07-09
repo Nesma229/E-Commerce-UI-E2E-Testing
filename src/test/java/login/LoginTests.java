@@ -1,18 +1,20 @@
 package login;
 
 import base.TestBase;
+import base.TestListeners;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static utilities.DataDrivenClass.JsonClass.readJson;
 
-
+@Listeners(TestListeners.class)
 public class LoginTests extends TestBase {
 
 //String jsonFilePath = System.getProperty("user.dir") + "src\\test\\resources\\LoginData.json";
 
 
-String jsonFilePath = "D:\\Selenium\\Selenium test\\E-Commerce-UI-E2E-Testing\\src\\test\\java\\resources\\LoginData.json";
+String jsonFilePath = System.getProperty("user.dir") + "\\src\\test\\java\\resources\\LoginData.json";
 
     @Test
     public void testValidLogin(){

@@ -1,8 +1,10 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
+import static utils.CustomMethods.*;
 
 public class RegisterConfirmPage {
     private WebDriver driver;
@@ -15,13 +17,13 @@ public class RegisterConfirmPage {
     private final By continueBtn = By.xpath("//a[@class='button-1 register-continue-button']");
 
 
-
+    @Step
     public final String getAlertText(){
-        return driver.findElement(registerSuccessfulMessage).getText();
+        return findElementPresence(driver,registerSuccessfulMessage).getText();
     }
-
+    @Step
     public HomePage clickContinue(){
-        driver.findElement(continueBtn).click();
+        findElementClickable(driver,continueBtn).click();
         return new HomePage(driver);
     }
 

@@ -20,15 +20,11 @@ public class CustomMethods {
     public static WebElement findElementClickable(WebDriver driver , By by){
         var wait = new FluentWait<>(driver).withTimeout(Duration.ofMillis(15000)).pollingEvery(Duration.ofMillis(500))
                 .ignoring(Exception.class);
-       // wait.until(ExpectedConditions.presenceOfElementLocated(by));
+
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
 
-//    public static WebElement findElementWithExplicitWaite(WebDriver driver , By by){
-//        var wait = new WebDriverWait(driver, Duration.ofSeconds(10)).ignoring(Exception.class);
-//
-//        return  wait.until(ExpectedConditions.elementToBeClickable(by));
-//    }
+
 
 }

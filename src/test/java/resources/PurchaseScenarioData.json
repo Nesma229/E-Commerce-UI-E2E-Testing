@@ -1,0 +1,15 @@
+{
+  "firstName" : "nesma",
+  "lastName" : "adel",
+  "day" : "2",
+  "month" : "May",
+  "year" : "1999",
+  "email" : "nesmaasdel90@mail.com",
+  "password" : "123456",
+  "confPassword" : "123456",
+  "country" : "123",
+  "city" : "cairo",
+  "address1" : "3 26th of july st.",
+  "postalCode" : "11245",
+  "phoneNumber" : "01833754623"
+}

@@ -1,7 +1,10 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static utils.CustomMethods.*;
 
 public class LoginPage {
     private WebDriver driver;
@@ -17,19 +20,19 @@ public class LoginPage {
     private final By alertMsgForLogin =By.xpath("//a[@class='ico-account']");
 
 
-
+    @Step
     public LoginPage enterLoginEmail(String email){
-        driver.findElement(emailField).sendKeys(email);
+        findElementPresence(driver,emailField).sendKeys(email);
         return this;
     }
-
+    @Step
     public LoginPage enterLoginPassword(String password){
-        driver.findElement(passwordField).sendKeys(password);
+        findElementPresence(driver,passwordField).sendKeys(password);
         return this;
     }
-
+    @Step
     public HomePage confirmLogin(){
-        driver.findElement(loginConfButton).click();
+        findElementClickable(driver,loginConfButton).click();
         return new HomePage(driver);
     }
 

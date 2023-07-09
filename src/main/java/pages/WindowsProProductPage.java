@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,17 +19,19 @@ public class WindowsProProductPage {
     private final By shoppingCartIcon = By.className("ico-cart");
  //   private final By goToCartButton = By.xpath("//button[@class='button-1 cart-button']");
 
+
+    @Step
     public WindowsProProductPage clickWindowsAddToCart(){
-        findElementPresence(driver,addToCartWindowsProduct).click();
+        findElementClickable(driver,addToCartWindowsProduct).click();
         return this;
     }
-
+    @Step
     public WindowsProProductPage clickCloseMsg(){
 
-        findElementPresence(driver,closeAlertMsg).click();
+        findElementClickable(driver,closeAlertMsg).click();
         return this;
     }
-
+    @Step
     public ShoppingCartPage clickShoppingCartIcon(){
         findElementClickable(driver,shoppingCartIcon).click();
         return new ShoppingCartPage(driver);

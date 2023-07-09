@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="DemoCommerceBestPractice Suite">
-    <test name="TestFLows">
+    <listeners>
+        <listener class-name="base.TestListeners"/>  <!-- the directory of the listeners class in the project-->
+        </listeners>
+        <test name="RegistrationTest">
+            <classes>
+                <class name="registration.RegistrationTests">
+                </class>
+            </classes>
+        </test>
+
+        <test name="LoginTest">
+            <classes>
+                <class name="login.LoginTests">
+                </class>
+            </classes>
+        </test>
+
+        <test name="SearchTest">
+            <classes>
+            <class name="search.SearchTest">
+                </class>
+            </classes>
+        </test>
+
+        <test name="CurrencyTest">
+            <classes>
+                <class name="currency.SwitchCustomerCurrencyTest">
+                    <methods>
+                        <include name="selectDollarFromCurrencies"/>
+                    </methods>
+                </class>
+            </classes>
+        </test>
+
+        <test name="CategoriesTest">
+            <classes>
+                <class name="categories.HoverCategory">
+                </class>
+            </classes>
+        </test>
+
+    <test name="purchaseTest">
         <classes>
-            <class name="registeration.RegistrationTests">
-                <methods>
-                    <include name = "testValidRegistration"/>
-                </methods>
-            </class>
-            <class name="shoppingCart.AddToCart">
-                <methods>
-                    <include name = "testValidAddToCart"/>
-                </methods>
+            <class name="purchaseItemWithLogin.PurchaseItemWithLoginTest">
             </class>
         </classes>
     </test>
